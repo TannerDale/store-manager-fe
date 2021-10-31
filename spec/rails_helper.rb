@@ -32,19 +32,22 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/vcr'
-  c.hook_into :webmock
-  c.configure_rspec_metadata!
-  c.filter_sensitive_data('<API_KEY>') { ENV['movie_api_key'] }
-  c.default_cassette_options = {
-    match_requests_on: %i[method host path]
-  }
-end
+# VCR.configure do |c|
+#   c.cassette_library_dir = 'spec/vcr'
+#   c.hook_into :webmock
+#   c.configure_rspec_metadata!
+#   c.default_cassette_options = {
+#     match_requests_on: %i[method host path]
+#   }
+# end
+Capybara.javascript_driver = :selenium_chrome_headless
 
 SimpleCov.start
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    'bin/webpack'
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
