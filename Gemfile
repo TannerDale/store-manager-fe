@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'react-rails'
 gem 'webpacker'
-
+gem 'jsonapi-serializer'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
