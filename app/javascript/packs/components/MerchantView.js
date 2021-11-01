@@ -42,11 +42,10 @@ class MerchantView extends React.Component {
   }
 
   render () {
-    let currPage = this.state.merchants
     return (
       <>
-      <button onClick={this.previousPage.bind(this)} class="btn btn-outline-danger btn-sm">Previous</button>
-      <button onClick={this.nextPage.bind(this)} class="btn btn-outline-success btn-sm">Next</button>
+      <button onClick={this.previousPage.bind(this)} class="btn btn-outline-danger btn-sm" id="previous">Previous</button>
+      <button onClick={this.nextPage.bind(this)} class="btn btn-outline-success btn-sm" id="next">Next</button>
       <p><b>Page: { this.state.page }</b></p>
       <ul>{ this.merchantList() }</ul>
       </>
