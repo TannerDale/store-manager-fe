@@ -9,6 +9,10 @@ class ItemService
       EngineClient.fetch("/api/v1/merchants/#{merchant_id}/items")[:data]
     end
 
+    def item(id)
+      EngineClient.fetch("/api/v1/items/#{id}")[:data]
+    end
+
     private
 
     def format_params(params)
